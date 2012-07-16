@@ -1,8 +1,3 @@
-//require.paths.unshift('.');
-//require.paths.unshift('..');
-//require.paths.unshift('./support');
-//require.paths.unshift('./node_modules');
-
 var files = require('../_require');
 
 // Load all specified files -------------------------------------------
