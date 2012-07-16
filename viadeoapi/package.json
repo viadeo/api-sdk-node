@@ -1,0 +1,16 @@
+{
+  "author": "Loïc DIAS DA SILVA <ldiasdasilva@viadeoteam.com>",
+  "name": "viadeoapi",
+  "description": "Viadeo Graph API connector",
+  "version": "0.5.0",
+  "homepage": "http://dev.viadeo.com",
+  "repository": {
+    "url": ""
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "0.4.12"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
