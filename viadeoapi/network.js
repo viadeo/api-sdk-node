@@ -167,7 +167,9 @@ var apimodule_network = function (VD) {
 
                       }
                   });
-
+                  
+                  // Hack: ensure connection closing ------------------------------
+                  res.on('close', function () { res.emit('end') });                  
                 });
 
                 // Error handler --------------------------------------------------
