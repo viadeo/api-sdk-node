@@ -169,7 +169,7 @@ var apimodule_api = function (VD) {
                 params.access_token = VD._accessToken;
             }
 
-            VD.Network.connect(path, method, VD.JSON.flatten(params), cb);
+            VD.Network.connect(path, method, params, cb);
         },
 
     });
