@@ -102,11 +102,10 @@ var apimodule_network = function (VD) {
 
                 for (var param in params) {
                     var str = params[param];
-                    if (str)
-                        dataLogger.debug('API '+g+' PARAM : \''+param+'\': '
-                                         + str.substring(0, 50)
-                                         + ((str.length > 50) ? '...' : '')
-                                        );
+                    if (str) {
+                        str = str.toString();
+                        dataLogger.debug("API ' +g +' PARAM : '" + param + "': " + str.substring(0, 50) + ((str.length > 50) ? "..." : ""));
+                    }
                 }
 
                 if (method && ((method == 'POST') || (method == 'PUT'))) {
