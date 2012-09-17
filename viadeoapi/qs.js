@@ -33,27 +33,41 @@ var apimodule_qs = function (VD) {
 
     VD.provide('QS', {
 
-        /**
+         /**
          * Encode parameters to a query string.
          *
          * @access private
-         * @param   params {Object}  the parameters to encode
+         * @param   object {Object}  the parameters to encode
          * @param   sep    {String}  the separator string (defaults to '&')
-         * @param   encode {Boolean} indicate if the key/value should be URI encoded
+         * @param   enc    {Boolean} indicate if the key/value should be URI encoded (defaults to true)
+         * @param   base   {String}  the parameters base path
          * @return         {String}  the query string
          */
-        encode: function(params, sep, encode) {
-            sep = sep === undefined ? '&' : sep;
-            encode = encode === false ? function(s) {return s;} : encodeURIComponent;
+        encode: function(object, sep, enc, base) {
+            var
+                queryString = [],
+                fillObject = function(val, i){
+                    qs[i] = val;
+                },
+                value, result, qs, key
+            ;
 
-            var pairs = [];
-            VD.Array.forEach(params, function(val, key) {
-                if (val !== null && typeof val != 'undefined') {
-                    pairs.push(encode(key) + '=' + encode(val));
+            for(key in object) {
+                value = object[key];
+                if (base) key = base; // Should be key = base + '[' + key + ']' but the API sux
+                if (value instanceof Object) {
+                    result = VD.QS.encode(value, sep, enc, key);
+                } else if (value instanceof Array) {
+                    qs = {};
+                    value.each(fillObject);
+                    result = VD.QS.encode(qs, sep, enc, key);
+                } else {
+                    result = key + '=' + (enc === false ? value : encodeURIComponent(value));
                 }
-            });
-            pairs.sort();
-            return pairs.join(sep);
+                if (value !== null) queryString.push(result);
+            }
+
+            return queryString.join(sep || '&');
         },
 
         // --------------------------------------------------------------------
