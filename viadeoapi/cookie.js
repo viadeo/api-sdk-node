@@ -106,10 +106,10 @@ var apimodule_cookie = function (VD) {
                 // url encoded session stored as "sub-cookies"
                 session = VD.QS.decode(cookie[1]);
                 console.log("SESSION FROM COOKIE: ", session);
-				if (vd != session.vd) {
-                    console.log("RETURN NULL COOKIE");
-					return null;
-				}
+                if (vd != session.vd) {
+                    console.log("UPDATE SESSION FROM COOKIE");
+                    session.vd = vd;
+                }
                 // decodes as a string, convert to a number
                 session.expires = parseInt(session.expires, 10);
                 // capture base_domain for use when we need to clear
