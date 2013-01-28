@@ -1,0 +1,19 @@
+{
+	"author": "Viadeo",
+	"name": "node-viadeo",
+	"description": "Viadeo Graph API connector",
+	"version": "0.1.0",
+	"homepage": "http://dev.viadeo.com",
+	"repository": {
+		"url": "https://github.com/viadeo/api-sdk-node"
+	},
+	"engines": {
+		"node": ">=0.4.12"
+	},
+	"dependencies": {
+		"request": "x"
+	},
+	"optionalDependencies": {
+		"memcacher": "0.1.x"
+	}
+}
